@@ -35,16 +35,16 @@ app = Flask(__name__)
 #################################################
 # Flask Routes
 #################################################
-precipitationRoute = “/api/v1.0/precipitation”
-stationsRoute = “/api/v1.0/stations”
-tobsRoute = “/api/v1.0/tobs”
+precipitationRoute = "/api/v1.0/precipitation"
+stationsRoute = "/api/v1.0/stations"
+tobsRoute = "/api/v1.0/tobs"
 
-@app.route(“/”)
+@app.route("/")
 def home():
     routes = f"""
-    <br><a href=“{precipitationRoute}”>{precipitationRoute}</a>
-    <br><a href=“{stationsRoute}”>{stationsRoute}</a>
-    <br><a href=“{tobsRoute}”>{tobsRoute}</a>
+    <br><a href="{precipitationRoute}">{precipitationRoute}</a>
+    <br><a href="{stationsRoute}">{stationsRoute}</a>
+    <br><a href="{tobsRoute}">{tobsRoute}</a>
     """
     return "Home" + routes
 
@@ -52,7 +52,7 @@ def home():
 def precipitationPage():
     # Perform a query to retrieve the data and precipitation scores
     recent12Months = session.query(measurement.date, measurement.prcp).filter(measurement.date >=
-                                                                              “2016-08-23”).order_by(
+                                                                              "2016-08-23").order_by(
         measurement.date).filter(measurement.prcp != None).order_by(measurement.date).all()
     # print(recent12Months)
 
